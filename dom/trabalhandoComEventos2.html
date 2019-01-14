@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Trabalhando com Eventos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class="conteudo exercicio">
+    <div>Elemento</div>
+    <script>
+        const item = document.querySelector('div')
+        item.style.position = 'absolute'
+
+        item.onmousemove = e => {
+            const item = e.target
+            // troca o icone do mouse
+            item.style.cursor = 'move'
+            // para verificar se o botão do mouse está clicado
+            if(e.buttons) {
+                // eixo Y
+                item.style.top = `${e.clientY - (item.clientHeight / 2)}px`
+                // eixo X
+                item.style.left = `${e.clientX - (item.clientWidth / 2)}px`
+            }
+        }
+    </script>
+</body>

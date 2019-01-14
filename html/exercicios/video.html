@@ -1,0 +1,58 @@
+<!-- controls faz os controles do video aparecerem -->
+<!-- autoplay video inicia automaticamente -->
+<video id="meuVideo" width="600" height="450" autoplay controls controlsList="nodownload">
+    <source src="http://files.cod3r.com.br/curso-web/video.mp4" type="video/mp4">
+    Seu browser não suporta a tag video
+</video>
+
+<div wm-progresso="meuVideo" class="progresso">
+    <!-- barra de progresso -->
+    <div></div>
+</div>
+
+<div>
+    <button wm-play="meuVideo">Play</button>
+    <button wm-pause="meuVideo">Pause</button>
+</div>
+
+<style>
+    .progresso {
+        height: 20px;
+        width: 500px;
+        border: solid 1px #444444;
+        margin: 20px;
+    }
+    .progresso > div {
+        background-color: red;
+        color: #fff;
+        height: 100%;
+        text-align: right;
+        font-size: 14px;
+        width: 0%;
+    }
+</style>
+
+<script>
+    const play = document.querySelector('[wm-play=meuVideo]')
+    const pause = document.querySelector('[wm-pause=meuVideo]')
+    const progress = document.querySelector('.progresso > div')
+    const video = document.getElementById('meuVideo')
+
+    video.oncontextmenu = () => false
+
+    play.onclick =  function (e) {
+        video.play()
+    }
+
+    pause.onclick = function (e) {
+        video.pause()
+    }
+
+    // Assign an ontimeupdate event to the video element, and execute a function if the current playback position has changed
+    video.ontimeupdate = function() {
+        const percent = video.currentTime * 100 / video.duration
+        progress.style.width = `${percent}%`
+        progress.innerHTML = `${percent.toFixed(1)}%`
+        // console.log(video.currentTime * 100 / video.duration)
+    }
+</script>

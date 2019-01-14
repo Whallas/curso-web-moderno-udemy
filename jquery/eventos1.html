@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Eventos #01</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+    <style>
+        input {
+            font-size: 2em
+        }
+    </style>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Eventos #01</h1>
+    <div id='posicao'></div>
+    <div id='cliques'>Cliques: 0</div>
+    <input type="text" placeholder="Cor de Background">
+
+    <script>
+        function mostrarPosicaoMouse(e) {
+            $('#posicao').html(`x: ${e.clientX} y: ${e.clientY}`)
+        }
+        // inputa uma Função de evento
+        $('body').on('mousemove', mostrarPosicaoMouse)
+        
+        // evento para mouse na área do elemento
+        $('#posicao').mouseover(e => {
+            // retira a função de evento
+            $('body').off('mousemove', mostrarPosicaoMouse)
+        })
+        
+        // deixa a área do elemento
+        $('#posicao').mouseleave(e => { 
+            $('body').mousemove(mostrarPosicaoMouse)
+        })
+
+        let cliques = 0
+        $('body').click(function (e) { 
+            e.preventDefault()
+            $('#cliques').html(`Cliques: ${++cliques}`)
+        })
+        
+        const backgroundOriginal = $('body').css('background-color')
+        
+        // evento de teclado
+        $('input').keyup(function (e) {
+            // valor do elemento atual 
+            const valor = $(this).val()
+            if (valor.match(/#[\d|a-f|A-F]{3,6}/)) {
+                $('body').css('background-color', valor)
+            } else {
+                $('body').css('background-color', backgroundOriginal)
+            }
+        })
+    </script>
+</body>

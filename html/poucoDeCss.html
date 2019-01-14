@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Um pouco de CSS</title>
+        <!--ligando arquivo css com o html-->
+        <link rel="stylesheet" href="poucoDeCss.css">
+        <!--código CSS-->
+        <style>
+            /*estilo para a tag h1 do html*/
+            h1 {
+                /*os h1's sumirão
+                display: none;*/
+                background-color: blueviolet;
+                font-size: 20px
+            }
+            /*classe css é criada assim:*/
+            .fundoVermelho {
+                background-color: #f00;
+            }
+
+            .negrito {
+                font-display: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>CSS</h1>
+        <span id="textoPrincipal">Texto 1</span><br><br><br>
+        <!-- classes funcionam como os id's mais são usadas para identificar grupos de tags, ou seja, no caso várias tags que vão sofrer a mesma estilização-->
+        <!--duas classes aplicadas no span-->
+        <span class="fundoVermelho negrito">Texto 2</span><br><br>
+        <span class="fundoVermelho" wm-atrib>Texto 3</span>
+    </body>
+</html>

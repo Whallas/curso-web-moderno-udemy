@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercícios HTML</title>
+    <style>
+        #conteudo {
+            padding: 30px 0px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Exercícios HTML</h1>
+    </header>
+    <nav>
+        <!-- <a href="exercicios/teste.html">00 - Teste</a> |
+        <a href="exercicios/temp.html">Temp</a> -->
+        <a href wm-nav="exercicios/teste.html">00 - Teste</a> |
+        <a href wm-nav="exercicios/texto1.html">01 - Texto 1</a> |
+        <a href wm-nav="exercicios/texto2.html">02 - Texto 2</a> |
+        <a href wm-nav="exercicios/listas.html">03 - Listas</a> |
+        <a href wm-nav="exercicios/listaAninhada.html">04 - Lista Aninhada</a> |
+        <a href wm-nav="exercicios/links.html">05 - Links</a> |
+        <a href wm-nav="exercicios/tabela.html">06 - Tabela</a> |
+        <a href wm-nav="exercicios/form/form.html">07 - Formulário</a> |
+        <a href wm-nav="exercicios/imagens.html">08 - Imagens</a> |
+        <a href wm-nav="exercicios/video.html">09 - Videos</a> |
+        <a href wm-nav="exercicios/tagsNaoVisuais.html">10 - Tags não Visuais</a>
+    </nav>
+    <section id="conteudo"></section>
+    <footer>
+        Curso de Web moderno
+    </footer>
+    <!--nessa tag roda javascript-->
+    <script>
+        // função do script: em vez do link acessar a pagina teste.html, deve realizar uma requisição ajax para pegar o conteúdo de teste.html e injetar na section 'conteudo'.
+
+        // seleciona todas as tags 'a'
+        document.querySelectorAll('a').forEach(link => {
+            // pega o elemento com o id 'conteudo' 
+            const conteudo = document.getElementById('conteudo')
+            
+            // implementa callbak de clique nos links
+            link.onclick = function (e) {
+                // vai prevenir que o comportamento padrão ocorra, ou seja, esse script aqui que deve ser executado e a navegação deve ser interrompida.
+                e.preventDefault()
+                // console.log('ação!!!')
+                // fetch pega o link e faz uma requisição ajax, que por dentro é uma promise que devolve a sua resposta
+                // fetch(link.href) => no caso de href
+                fetch(link.getAttribute('wm-nav')) // => no caso de tag personaliada
+                    // resp.text() chama uma segunda promise
+                    .then(resp => resp.text())
+                    // e injeta o html de teste.html dentro de conteudo
+                    .then(html => conteudo.innerHTML = html)
+            }
+        })
+    </script>
+</body>
+</html>

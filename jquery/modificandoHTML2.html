@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Modificando HTML #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Modificando HTML #02</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='div3'>3</div>
+    <p class='numero'>4</p>
+    <p class='numero'>5</p>
+
+    <script>
+        $('#div1').append(', 2')
+        $('#div1').prepend('0, ')
+        // mesma função, só inverte a sintaxe, porém só funciona para inserir elementos html
+        $('<span>, 3</span>').appendTo('#div1')
+        $('<span>-1, </span>').prependTo('#div1')
+
+        $('#div2').before('<p>Antes 2</p>')
+        $('#div2').after('<p>Depois 2</p>')
+        // funciona da mesma forma, poré só insere elementos html
+        $('<p>Antes 3</p>').insertBefore('#div3')
+        $('<p>Depois 3</p>').insertAfter('#div3')
+
+        // envolve com um novo elemento cada elemento jquery
+        // $('p.numero').wrap('<div>')
+        // envolve todos os elementos jquery selecinados em um único elemento
+        $('p.numero').wrapAll('<div id="div4">')
+        // exclui todo o conteúdo da div
+        $('#div4').empty()
+        
+        $('#div3, #div4').prev().remove();
+        
+        // pra cada elemento retonado por replace All, substituir por um elemento jquery
+        // $('<div>Substituto</div>').replaceAll('body > p')
+        // mesma operação de forma invertida
+        // $('body > p').replaceWith('<div>Substituto</div>')
+        $('body > p').replaceWith(function () {
+            return $('<div>').html($(this).html()).append('!!!')
+        })
+    </script>
+</body>

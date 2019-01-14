@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Acessando Atributos #02</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+</head>
+
+<body class='conteudo exercicio'>
+    <div>
+        <label for="compras">Compras</label>
+        <ul id="compras" destino='escritório' data-urgencia="5">
+            <li>Café</li>
+            <li>Água</li>
+            <li>Copo Descartável</li>
+        </ul>
+    </div>
+    <script>
+        const lista = document.querySelector('div ul[destino="escritório"]')
+        console.log('Elemento "ul" .........')
+        console.log('childNodes', lista.childNodes)
+        // notação ponto para atributos personalizados não funciona, retorna undefined
+        console.log('destino', lista.destino)
+        console.log('destino', lista.getAttribute('destino'))
+        // saber se algum atributo está ou não dentro de um elemento
+        console.log('hasAttribute', lista.hasAttribute('destino'))
+        // setar valor do atributo
+        lista.setAttribute('destino', 'empresa')
+        // setAttribute também adiciona o atributo caso ele não exista
+        lista.setAttribute('status', 'aberto')
+        // remover atributo
+        lista.removeAttribute('destino')
+        
+        // atributos customizados que iniciam com 'data-' são tratatos de forma um pouco diferente dos demais.
+        console.log(lista.dataset.urgencia)
+        lista.dataset.urgencia = 4
+        console.log(lista.getAttribute('data-urgencia'))
+
+        // cuidado
+        const label = document.querySelector('label')
+        console.log(label.for)
+        console.log(label.htmlFor)
+        console.log(label.getAttribute('for'))
+    </script>
+</body>
+
+</html>

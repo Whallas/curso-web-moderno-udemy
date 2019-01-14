@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Herança</title>
+    <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Oswald', sans-serif;
+            font-size: 40px;
+            /* não são herdados por padrão pelos filhos: */
+            border: solid 3px red;
+            padding: 50px;
+        }
+
+        div {
+            /* inherit habilita a herança */
+            border: inherit;
+            padding: inherit;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="font-size: 3em">Herança</h1>
+    <div>Estou herdando</div>
+</body>
+
+</html>

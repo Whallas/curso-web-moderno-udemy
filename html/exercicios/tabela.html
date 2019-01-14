@@ -1,0 +1,64 @@
+<table>
+    <!-- caption - O que representa a tabela -->
+    <caption>Produtos</caption>
+    <!-- thead, tbody e tfoot podem ser omitidos, não que seje recomendado -->
+    <!-- área do cabeçalho da tabela -->
+    <thead>
+        <!-- table row -->
+        <tr>
+            <!-- table head -->
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Quantidade</th>
+            <th>Total</th>
+        </tr>
+    </thead>
+    <!-- área do corpo da tabela -->
+    <tbody>
+        <tr>
+            <!-- table data: Célula -->
+            <td>iPad</td>
+            <td>3289,00</td>
+            <td>5</td>
+            <td>16445,00</td>
+        </tr>
+        <tr>
+            <td>Sansung S9</td>
+            <td>2649,00</td>
+            <td>8</td>
+            <td>21192,00</td>
+        </tr>
+    </tbody>
+    <!-- área do rodapé da tabela -->
+    <tfoot>
+        <tr>
+            <!-- colspan: ocupa x colunas -->
+            <!-- rowspan: ocupa x linhas -->
+            <td colspan="3">Total</td>
+            <td>37637,00</td>
+        </tr>
+    </tfoot>
+</table>
+
+<style>
+    table {
+        border-collapse: collapse
+    }
+    /* em th e td */
+    th, td {
+        padding: 10px
+    }
+    /* em tr dentro de thead */
+    thead tr {
+        border-bottom: solid 3px #444;
+    }
+    /* em tr dentro de tbody ao passar o mouse por cima */
+    tbody tr:hover{
+        background-color: #dedede
+    }
+    tfoot {
+        background-color: #444;
+        color: #ffffff;
+        font-weight: bold; 
+    }
+</style>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='UTF-8'>
+    <title>Manipulando CSS</title>
+    <link rel='stylesheet' href='css/estilo.css'>
+    <script src='js/jquery.js'></script>
+</head>
+
+<body class='conteudo exercicio'>
+    <h1>Manipulando CSS</h1>
+    <div id='div1'>1</div>
+    <div id='div2'>2</div>
+    <div id='resultado'></div>
+    <script>
+        // se eu passar o valor do atributo css, css() vai entender
+        // que eu estou querendo ler o atributo.
+        const fonte = $('#div1').css('font-family')
+        $('#resultado').append(`Fonte é ${fonte}`)
+
+        $('#div1').css('font-size', '3em')
+        // vários atributos
+        $('#div1').css({ 'font-size': '3.5em', 'color': 'yellow' })
+        // também é possível passar uma callback para retorna o valor do atributo
+        $('#div1').css('font-size', function () {
+            return `${2 * 2}em`
+        })
+
+        $('#div2').addClass('destaque')
+
+        const temClasse = $('#div2').hasClass('destaque')
+        $('#resultado').append(`<br>Tem class? ${temClasse}`)
+
+        $('#div2').removeClass('destaque')
+        // alterna
+        $('#div2').toggleClass('destaque')
+    </script>
+</body>

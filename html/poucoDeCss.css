@@ -1,0 +1,9 @@
+/*id tag no css é criado assim:*/
+#textoPrincipal {
+    font-size: 40px;
+    font-weight: bold;
+    color: chartreuse;
+    padding: 10px;
+    background-color: black;
+    margin-bottom: 50px;
+}

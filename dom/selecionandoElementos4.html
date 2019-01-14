@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Selecionar Elementos #04</title>
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+
+<body class="conteudo exercicio">
+    <div>
+        <p>Início</p>
+    </div>
+    <div>
+        <ul>
+            <li>Pedro</li>
+            <li>Ana</li>
+            <li>Bia</li>
+        </ul>
+    </div>
+    <div>
+        <p>Fim</p>
+    </div>
+    <script>
+        function log() {
+            console.log(this)
+        }
+        // Acrescentando a função log aos prototypes
+        HTMLCollection.prototype.log = log
+        HTMLElement.prototype.log = log
+        NodeList.prototype.log = log
+        Node.prototype.log = log
+
+        const lista = document.querySelector('div ul')
+        // retorna o pai do elemento
+        lista.parentNode.log()
+        // retorna uma nodelist de filhos do elemento, retorna os espaços entre os elementos no html
+        lista.childNodes.log()
+        
+        // primeiro elemento da lista, também considera espaço em branco
+        const primeiro = lista.firstChild
+        primeiro.log()
+        // pega o próximo irmão do elemento
+        primeiro.nextSibling.log()
+
+        // último elemento da lista
+        const ultimo = lista.lastChild
+        ultimo.log()
+        // retorna o irmão anterior do elemento
+        ultimo.previousSibling.log()
+
+        // também retorna todos os filhos, porém retorna como HTML Collection e não considera os espações entre as tags
+        lista.children.log()
+        // retorna de fato a primeira tag da lista, diferente de firstChild
+        lista.firstElementChild.log()
+
+        lista.parentNode.previousSibling.log()
+        lista.parentNode.nextSibling.log()
+    </script>
+</body>
+
+</html>
